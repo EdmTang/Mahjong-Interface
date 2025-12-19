@@ -1,5 +1,47 @@
-<DOCTYPE RCC><RCC version = "1.0">
-<qresource>
-<file></file>
-</qresource>
+<!DOCTYPE RCC>
+<RCC version="1.0">
+    <qresource>
+        <file alias='bamboo1.png'>mahjong_tiles/bamboo1.png</file>
+        <file alias='bamboo2.png'>mahjong_tiles/bamboo2.png</file>
+        <file alias='bamboo3.png'>mahjong_tiles/bamboo3.png</file>
+        <file alias='bamboo4.png'>mahjong_tiles/bamboo4.png</file>
+        <file alias='bamboo5.png'>mahjong_tiles/bamboo5.png</file>
+        <file alias='bamboo6.png'>mahjong_tiles/bamboo6.png</file>
+        <file alias='bamboo7.png'>mahjong_tiles/bamboo7.png</file>
+        <file alias='bamboo8.png'>mahjong_tiles/bamboo8.png</file>
+        <file alias='bamboo9.png'>mahjong_tiles/bamboo9.png</file>
+        <file alias='circle1.png'>mahjong_tiles/circle1.png</file>
+        <file alias='circle2.png'>mahjong_tiles/circle2.png</file>
+        <file alias='circle3.png'>mahjong_tiles/circle3.png</file>
+        <file alias='circle4.png'>mahjong_tiles/circle4.png</file>
+        <file alias='circle5.png'>mahjong_tiles/circle5.png</file>
+        <file alias='circle6.png'>mahjong_tiles/circle6.png</file>
+        <file alias='circle7.png'>mahjong_tiles/circle7.png</file>
+        <file alias='circle8.png'>mahjong_tiles/circle8.png</file>
+        <file alias='circle9.png'>mahjong_tiles/circle9.png</file>
+        <file alias='east.png'>mahjong_tiles/east.png</file>
+        <file alias='flower1.png'>mahjong_tiles/flower1.png</file>
+        <file alias='flower2.png'>mahjong_tiles/flower2.png</file>
+        <file alias='flower3.png'>mahjong_tiles/flower3.png</file>
+        <file alias='flower4.png'>mahjong_tiles/flower4.png</file>
+        <file alias='flower5.png'>mahjong_tiles/flower5.png</file>
+        <file alias='flower6.png'>mahjong_tiles/flower6.png</file>
+        <file alias='flower7.png'>mahjong_tiles/flower7.png</file>
+        <file alias='flower8.png'>mahjong_tiles/flower8.png</file>
+        <file alias='green.png'>mahjong_tiles/green.png</file>
+        <file alias='north.png'>mahjong_tiles/north.png</file>
+        <file alias='red.png'>mahjong_tiles/red.png</file>
+        <file alias='south.png'>mahjong_tiles/south.png</file>
+        <file alias='wan1.png'>mahjong_tiles/wan1.png</file>
+        <file alias='wan2.png'>mahjong_tiles/wan2.png</file>
+        <file alias='wan3.png'>mahjong_tiles/wan3.png</file>
+        <file alias='wan4.png'>mahjong_tiles/wan4.png</file>
+        <file alias='wan5.png'>mahjong_tiles/wan5.png</file>
+        <file alias='wan6.png'>mahjong_tiles/wan6.png</file>
+        <file alias='wan7.png'>mahjong_tiles/wan7.png</file>
+        <file alias='wan8.png'>mahjong_tiles/wan8.png</file>
+        <file alias='wan9.png'>mahjong_tiles/wan9.png</file>
+        <file alias='west.png'>mahjong_tiles/west.png</file>
+        <file alias='white.png'>mahjong_tiles/white.png</file>
+        </qresource>
 </RCC>

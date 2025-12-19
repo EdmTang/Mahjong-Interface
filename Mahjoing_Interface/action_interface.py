@@ -1,5 +1,6 @@
 from PySide6 import QtWidgets as qtw, QtCore as qtc, QtGui as qtg
 import sys
+import tiles_rc  # used to access mahjong tile images
 
 
 # function that turns array of tiles in text form into array of QPixmaps
@@ -8,7 +9,7 @@ def meld(choice, vertical=False):
     images = []
     # Populate images array with pixmap
     for tile in range(len(choice)):
-        images.append(qtg.QPixmap(f"mahjong_tiles/{choice[tile]}.png"))
+        images.append(qtg.QPixmap(f":/{choice[tile]}.png")) # must run from Mahjong_Interface as current working directory
     # Go through list of choice and return a list of QPiximages
     if vertical is False:
         

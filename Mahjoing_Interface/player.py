@@ -11,15 +11,19 @@ class player(qtw.QWidget):
         self.hand = qtw.QWidget()
         self.sets = qtw.QWidget()
         self.buttons = qtw.QWidget()
+        self.cancel = qtw.QPushButton("Cancel")
         self.pong = qtw.QPushButton("Pong")
         self.chow = qtw.QPushButton("Chow")
         self.kong = qtw.QPushButton("Kong")
         self.hu = qtw.QPushButton("Hu")
         self.zimo = qtw.QPushButton("Zimo")
-        self.interacts = [self.pong, self.chow, self.kong, self.hu, self.zimo]
+        self.interacts = [self.pong, self.chow, self.kong, self.hu, self.zimo, self.cancel]
         for button in self.interacts:
             # button.setEnabled(False)
-            button.clicked.connect(lambda checked, currentButton=button: self.pressed(currentButton))
+            if button == self.cancel:
+                button.clicked.connect(self.canceled)
+            else:
+                button.clicked.connect(self.pressed)
             button.setStyleSheet("""
                 QPushButton {
                     background-color: lightgreen;
@@ -86,13 +90,22 @@ class player(qtw.QWidget):
         self.layout().addWidget(self.buttons)
 
     def __constructButtons(self):
+        self.buttons.layout().addWidget(self.cancel)
         self.buttons.layout().addWidget(self.pong)
         self.buttons.layout().addWidget(self.chow)
         self.buttons.layout().addWidget(self.kong)
         self.buttons.layout().addWidget(self.hu)
         self.buttons.layout().addWidget(self.zimo)
 
-    def pressed(self, button):
-        button.setEnabled(False)
+    def pressed(self, checked):
+        for button in self.interacts:
+            button.setEnabled(False)
+        self.cancel.setEnabled(False)
         if button != self.chow:
             self.affirm.emit(1)
+
+    def canceled(self, checked):
+        for button in self.interacts:
+            button.setEnabled(False)
+        self.cancel.setEnabled(False)
+        self.affirm.emit(0)

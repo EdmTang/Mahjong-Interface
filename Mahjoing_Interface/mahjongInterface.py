@@ -2,11 +2,9 @@ from PySide6 import QtWidgets as qtw, QtCore as qtc, QtGui as qtg
 from borderlayout import BorderLayout, Position
 from action_interface import ActionInterface, meld
 from player import player as plyr
+from flowlayout import FlowLayout
 import os
 import random
-
-
-BASEDIR = os.path.dirname("__file__")
 
 
 class MahjongInterface(qtw.QWidget):
@@ -44,8 +42,7 @@ class MahjongInterface(qtw.QWidget):
 
         self.discard = qtw.QWidget()
         self.discard.setStyleSheet("background-color: rgb(0, 80, 0);")
-        self.discard.setLayout(qtw.QHBoxLayout())
-        self.discard.layout().addWidget(qtw.QLabel("discard", alignment=qtc.Qt.AlignCenter))
+        self.flowLayout = FlowLayout(self.discard)
         # border layout for whole mahjong game layout-----------------------
         self.layout = BorderLayout()
 
@@ -117,11 +114,12 @@ class MahjongInterface(qtw.QWidget):
     # playerHand can be removed from parameters for finished product
     def remove(self, playerHand, tileNumber):
         self.discarded.emit(tileNumber)
+        randnum = random.randint(1, 9)
+        self.flowLayout.addWidget(qtw.QLabel(pixmap=meld([f"wan{randnum}"]), alignment=qtc.Qt.AlignCenter))
         self.refreshHand(playerHand=playerHand) # for testing purposes, to force a refresh on the hand after clicking
 
-# custom signals, Master pyqt part 4
-# Moving data between signals between windows, Master pyqt part 5
+
 '''
 TO DO:
-# implement actions(pong, kong, etc) except chow
+Implement gridlayout properly for Discard pile
 '''

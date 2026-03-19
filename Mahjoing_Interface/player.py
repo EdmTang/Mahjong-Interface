@@ -101,8 +101,7 @@ class player(qtw.QWidget):
         for button in self.interacts:
             button.setEnabled(False)
         self.cancel.setEnabled(False)
-        if button != self.chow:
-            self.affirm.emit(1)
+        self.affirm.emit(1)
 
     def canceled(self, checked):
         for button in self.interacts:

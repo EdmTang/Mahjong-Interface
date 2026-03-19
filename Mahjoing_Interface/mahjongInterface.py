@@ -27,18 +27,22 @@ class MahjongInterface(qtw.QWidget):
         self.player1 = plyr(1)
         self.player1.chow.clicked.connect(lambda checked: self.chow(self.player1))
         self.player1.chow.setEnabled(True) # will be enabled at the start of the game for testing purposes
+        self.player1.affirm.connect(lambda affirmed: self.removeLast() if affirmed == 1 else None)
 
         self.player2 = plyr(2)
         self.player2.chow.clicked.connect(lambda checked: self.chow(self.player2))
         self.player2.chow.setEnabled(True) # will be enabled at the start of the game for testing purposes
+        self.player2.affirm.connect(lambda affirmed: self.removeLast() if affirmed == 1 else None)
 
         self.player3 = plyr(3)
         self.player3.chow.clicked.connect(lambda checked: self.chow(self.player3))
         self.player3.chow.setEnabled(True) # will be enabled at the start of the game for testing purposes
+        self.player3.affirm.connect(lambda affirmed: self.removeLast() if affirmed == 1 else None)
 
         self.player4 = plyr(4)
         self.player4.chow.clicked.connect(lambda checked: self.chow(self.player4))
         self.player4.chow.setEnabled(True) # will be enabled at the start of the game for testing purposes
+        self.player4.affirm.connect(lambda affirmed: self.removeLast() if affirmed == 1 else None)
 
         self.discard = qtw.QWidget()
         self.discard.setStyleSheet("background-color: rgb(0, 80, 0);")
@@ -64,6 +68,7 @@ class MahjongInterface(qtw.QWidget):
         self.pingKong.connect(lambda player: self.enable_kong(player))
         self.pingZimo.connect(lambda player: self.enable_zimo(player))
         self.pingHu.connect(lambda player: self.enable_hu(player))
+
 
     # Actions(chow, pung, win, etc) will first be prompted by buttons. if chow is chosen; action window gets prompted
     # choices for Chow will be in this seperate window.
@@ -118,8 +123,34 @@ class MahjongInterface(qtw.QWidget):
         self.flowLayout.addWidget(qtw.QLabel(pixmap=meld([f"wan{randnum}"]), alignment=qtc.Qt.AlignCenter))
         self.refreshHand(playerHand=playerHand) # for testing purposes, to force a refresh on the hand after clicking
 
+    def removeLast(self):
+        count = self.flowLayout.count()
+        if count > 0:
+        # 'takeAt' removes the item from the flowLayout at the specified index.
+        # Since indices start at 0, the last item is always (count - 1).
+            item = self.flowLayout.takeAt(count - 1)
+            widget = item.widget()
+            if widget:
+                # 4. Safely destroy the widget
+                widget.deleteLater()
+        
 
 '''
 TO DO:
-Implement gridlayout properly for Discard pile
+Implement removal of tile from discard pile when pong or chow is invoked:
+def remove_last_widget(layout):
+    # 1. Find out how many items are currently in the layout
+    count = layout.count()
+    
+    if count > 0:
+        # 2. 'takeAt' removes the item from the layout at the specified index.
+        # Since indices start at 0, the last item is always (count - 1).
+        item = layout.takeAt(count - 1)
+        
+        # 3. Extract the actual QWidget from the layout item
+        widget = item.widget()
+        
+        if widget:
+            # 4. Safely destroy the widget
+            widget.deleteLater()
 '''

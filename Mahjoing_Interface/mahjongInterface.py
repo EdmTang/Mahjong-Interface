@@ -137,20 +137,4 @@ class MahjongInterface(qtw.QWidget):
 
 '''
 TO DO:
-Implement removal of tile from discard pile when pong or chow is invoked:
-def remove_last_widget(layout):
-    # 1. Find out how many items are currently in the layout
-    count = layout.count()
-    
-    if count > 0:
-        # 2. 'takeAt' removes the item from the layout at the specified index.
-        # Since indices start at 0, the last item is always (count - 1).
-        item = layout.takeAt(count - 1)
-        
-        # 3. Extract the actual QWidget from the layout item
-        widget = item.widget()
-        
-        if widget:
-            # 4. Safely destroy the widget
-            widget.deleteLater()
 '''

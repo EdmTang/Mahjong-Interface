@@ -28,21 +28,29 @@ class MahjongInterface(qtw.QWidget):
         self.player1.chow.clicked.connect(lambda checked: self.chow(self.player1))
         self.player1.chow.setEnabled(True) # will be enabled at the start of the game for testing purposes
         self.player1.affirm.connect(lambda affirmed: self.removeLast() if affirmed == 1 else None)
+        self.player1.hu.clicked.connect(lambda checked: self.win())
+        self.player1.zimo.clicked.connect(lambda checked: self.win())
 
         self.player2 = plyr(2)
         self.player2.chow.clicked.connect(lambda checked: self.chow(self.player2))
         self.player2.chow.setEnabled(True) # will be enabled at the start of the game for testing purposes
         self.player2.affirm.connect(lambda affirmed: self.removeLast() if affirmed == 1 else None)
+        self.player2.hu.clicked.connect(lambda checked: self.win())
+        self.player2.zimo.clicked.connect(lambda checked: self.win())
 
         self.player3 = plyr(3)
         self.player3.chow.clicked.connect(lambda checked: self.chow(self.player3))
         self.player3.chow.setEnabled(True) # will be enabled at the start of the game for testing purposes
         self.player3.affirm.connect(lambda affirmed: self.removeLast() if affirmed == 1 else None)
+        self.player3.hu.clicked.connect(lambda checked: self.win())
+        self.player3.zimo.clicked.connect(lambda checked: self.win())
 
         self.player4 = plyr(4)
         self.player4.chow.clicked.connect(lambda checked: self.chow(self.player4))
         self.player4.chow.setEnabled(True) # will be enabled at the start of the game for testing purposes
         self.player4.affirm.connect(lambda affirmed: self.removeLast() if affirmed == 1 else None)
+        self.player4.hu.clicked.connect(lambda checked: self.win())
+        self.player4.zimo.clicked.connect(lambda checked: self.win())
 
         self.discard = qtw.QWidget()
         self.discard.setStyleSheet("background-color: rgb(0, 80, 0);")
@@ -93,6 +101,14 @@ class MahjongInterface(qtw.QWidget):
         self.actionWindow.submitted.connect(lambda choice: self.updateSets(player, choice))
         self.actionWindow.submitted.connect(lambda: self.refreshHand(player.hand))
         self.actionWindow.show()
+
+    def win(self):
+        self.victory = qtw.QWidget()
+        self.victory.setWindowTitle("Victory")
+        victor = qtw.QLabel("You win!", alignment=qtc.Qt.AlignCenter)
+        self.victory.setLayout(qtw.QVBoxLayout())
+        self.victory.layout().addWidget(victor)
+        self.victory.show()
 
     def updateSets(self, player, chosen):
         if player.number == 2 or player.number == 4:
